@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <section id="overall">
+      <nav class="nav">
+        <div class="container">
+          <div id="mainListDiv" class="main_list">
+            <ul class="navlinks">
+              <li><a href="#">Home</a></li>
+              <li><a href="#income_link">Income</a></li>
+              <li><a href="#expense_link">Expense</a></li>
+              <li><a href="#your_progress">Progress</a></li>
+              <li><a href="about.html" target="_blank">About</a></li>
+            </ul>
+          </div>
+          <span class="navTrigger">
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
+        </div>
+      </nav>
+ 
+      <div class="introduction">
+        <h1>Budget management app</h1>
+        <p>Đây là app quản lý tài chính dành cho bạn</p>
+      </div>
+    </section>
+ 
+    <div class="feature" style="color: white;">
+      <h2 class="head1">OUR FEATURES</h2>
+      <ul id="ul2">
+        <li id="li2">
+          <div class="block1">
+            <h2>Income</h2>
+            <br />
+            Caculating the amount of money you earn
+          </div>
+        </li>
+        <li id="li2">
+          <div class="block1">
+            <h2>Expense</h2>
+            <br />Estimate how much money you spend
+          </div>
+        </li>
+        <li id="li2">
+          <div class="block1">
+            <h2>Progress</h2>
+            <br /> Setting up finacial goal.
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <h2>Login khum bạn</h2>
+
+    <button onclick="document.getElementById('login').style.display='block'" style="width:auto; background-color: #0478aac8;color: white;
+    padding: 14px 20px;margin: 8px 0;border: none;cursor: pointer;">Login</button>
+
+    <div id="login" class="modal">
+    <form class="login_form">
+        <h1><p class="login_form_heading">Login</p></h1>
+        <b>Họ và tên</b>:<br>
+        <input class="login_form_name" placeholder="  Name" type="text" name="txtHovaten"><br>
+        <b>Tên đăng nhập</b>:<br>
+        <input class="login_form_username" placeholder="  Username" type="text" name="Tendangnhap"><br>
+        <b>Mật khẩu</b>:<br>
+        <input class="login_form_password" placeholder="  Password" type="password" name="Matkhau"><br>
+        <button class="login_form_btn">Hoàn thành</button>
+    </form>  
+    </div>
+ 
+    <h1 id="income_link">Income Chart</h1>
+    <form>  
+        <label>Jan <input type="number" onchange='updateChart()' id="in1" value=""></label><br>
+        <label>Feb <input type="number" onchange='updateChart()' id="in2" value=""></label><br>
+        <label>Mar <input type="number" onchange='updateChart()' id="in3" value=""></label><br>
+        <label>Apr <input type="number" onchange='updateChart()' id="in4" value=""></label><br>
+        <label>May <input type="number" onchange='updateChart()' id="in5" value=""></label><br>
+        <label>Jun <input type="number" onchange='updateChart()' id="in6" value=""></label><br>
+        <label>Jul <input type="number" onchange='updateChart()' id="in7" value=""></label><br>
+        <label>Aug <input type="number" onchange='updateChart()' id="in8" value=""></label><br>
+        <label>Sep <input type="number" onchange='updateChart()' id="in9" value=""></label><br>
+        <label>Oct <input type="number" onchange='updateChart()' id="in10" value=""></label><br>
+        <label>Nov <input type="number" onchange='updateChart()' id="in11" value=""></label><br>
+        <label>Dec <input type="number" onchange='updateChart()' id="in12" value=""></label><br>
+    </form>
+ 
+    <table class="table_income">
+        <tr><span style="padding:5px">Income Data</span></tr>
+        <tr>
+            <th>Source</th>
+            <th>Jan</th>
+            <th>Feb</th>
+            <th>Mar</th>
+            <th>Apr</th>
+            <th>May</th>
+            <th>Jun</th>
+            <th>Jul</th>
+            <th>Aug</th>
+            <th>Sep</th>
+            <th>Oct</th>
+            <th>Nov</th>
+            <th>Dec</th>
+        </tr>
+        <tr>
+            <td>Salary</td>
+            <td><input type="number" id="sa1" class="Jan"></td>
+            <td><input type="number" id="sa2" class="Feb"></td>
+            <td><input type="number" id="sa3" class="Mar"></td>
+            <td><input type="number" id="sa4" class="Apr"></td>
+            <td><input type="number" id="sa5" class="May"></td>
+            <td><input type="number" id="sa6" class="Jun"></td>
+            <td><input type="number" id="sa7" class="Jul"></td>
+            <td><input type="number" id="sa8" class="Aug"></td>
+            <td><input type="number" id="sa9" class="Sep"></td>
+            <td><input type="number" id="sa10" class="Oct"></td>
+            <td><input type="number" id="sa11" class="Nov"></td>
+            <td><input type="number" id="sa12" class="Dec"></td>
+        </tr>
+        <tr>
+            <td>Parents</td>
+            <td><input type="number" id="pa1" class="Jan"></td>
+            <td><input type="number" id="pa2" class="Feb"></td>
+            <td><input type="number" id="pa3" class="Mar"></td>
+            <td><input type="number" id="pa4" class="Apr"></td>
+            <td><input type="number" id="pa5" class="May"></td>
+            <td><input type="number" id="pa6" class="Jun"></td>
+            <td><input type="number" id="pa7" class="Jul"></td>
+            <td><input type="number" id="pa8" class="Aug"></td>
+            <td><input type="number" id="pa9" class="Sep"></td>
+            <td><input type="number" id="pa10" class="Oct"></td>
+            <td><input type="number" id="pa11" class="Nov"></td>
+            <td><input type="number" id="pa12" class="Dec"></td>
+        </tr>
+        <tr>
+            <td>Others</td>
+            <td><input type="number" id="ot1" class="Jan"></td>
+            <td><input type="number" id="ot2" class="Feb"></td>
+            <td><input type="number" id="ot3" class="Mar"></td>
+            <td><input type="number" id="ot4" class="Apr"></td>
+            <td><input type="number" id="ot5" class="May"></td>
+            <td><input type="number" id="ot6" class="Jun"></td>
+            <td><input type="number" id="ot7" class="Jul"></td>
+            <td><input type="number" id="ot8" class="Aug"></td>
+            <td><input type="number" id="ot9" class="Sep"></td>
+            <td><input type="number" id="ot10" class="Oct"></td>
+            <td><input type="number" id="ot11" class="Nov"></td>
+            <td><input type="number" id="ot12" class="Dec"></td>
+        </tr>
+        <tr>
+            <td>Sum</td>
+            <td><input type="number" id="inSum1" class="Jan"></td>
+            <td><input type="number" id="inSum2" class="Feb"></td>
+            <td><input type="number" id="inSum3" class="Mar"></td>
+            <td><input type="number" id="inSum4" class="Apr"></td>
+            <td><input type="number" id="inSum5" class="May"></td>
+            <td><input type="number" id="inSum6" class="Jun"></td>
+            <td><input type="number" id="inSum7" class="Jul"></td>
+            <td><input type="number" id="inSum8" class="Aug"></td>
+            <td><input type="number" id="inSum9" class="Sep"></td>
+            <td><input type="number" id="inSum10" class="Oct"></td>
+            <td><input type="number" id="inSum11" class="Nov"></td>
+            <td><input type="number" id="inSum12" class="Dec"></td>
+        </tr>
+    </table>
+    <canvas id="Income_chart" width="300" height="300"></canvas>
+ 
+    <h1 id="expense_link">Expense Chart</h1>
+    <form>  
+        <label>Jan <input type="number" onchange='updateChart1()' id="ex1" value=""></label><br>
+        <label>Feb <input type="number" onchange='updateChart1()' id="ex2" value=""></label><br>
+        <label>Mar <input type="number" onchange='updateChart1()' id="ex3" value=""></label><br>
+        <label>Apr <input type="number" onchange='updateChart1()' id="ex4" value=""></label><br>
+        <label>May <input type="number" onchange='updateChart1()' id="ex5" value=""></label><br>
+        <label>Jun <input type="number" onchange='updateChart1()' id="ex6" value=""></label><br>
+        <label>Jul <input type="number" onchange='updateChart1()' id="ex7" value=""></label><br>
+        <label>Aug <input type="number" onchange='updateChart1()' id="ex8" value=""></label><br>
+        <label>Sep <input type="number" onchange='updateChart1()' id="ex9" value=""></label><br>
+        <label>Oct <input type="number" onchange='updateChart1()' id="ex10" value=""></label><br>
+        <label>Nov <input type="number" onchange='updateChart1()' id="ex11" value=""></label><br>
+        <label>Dec <input type="number" onchange='updateChart1()' id="ex12" value=""></label><br>
+    </form>
+ 
+ 
+    <table class="table_expense">
+        <tr><span style="padding:5px">Expense Data</span></tr>
+        <tr>
+            <th>Expense</th>
+            <th>Jan</th>
+            <th>Feb</th>
+            <th>Mar</th>
+            <th>Apr</th>
+            <th>May</th>
+            <th>Jun</th>
+            <th>Jul</th>
+            <th>Aug</th>
+            <th>Sep</th>
+            <th>Oct</th>
+            <th>Nov</th>
+            <th>Dec</th>
+        </tr>
+        <tr>
+            <td>Tuition</td>
+            <td><input type="number" id="tui1" class="Jan"></td>
+            <td><input type="number" id="tui2" class="Feb"></td>
+            <td><input type="number" id="tui3" class="Mar"></td>
+            <td><input type="number" id="tui4" class="Apr"></td>
+            <td><input type="number" id="tui5" class="May"></td>
+            <td><input type="number" id="tui6" class="Jun"></td>
+            <td><input type="number" id="tui7" class="Jul"></td>
+            <td><input type="number" id="tui8" class="Aug"></td>
+            <td><input type="number" id="tui9" class="Sep"></td>
+            <td><input type="number" id="tui10" class="Oct"></td>
+            <td><input type="number" id="tui11" class="Nov"></td>
+            <td><input type="number" id="tui12" class="Dec"></td>
+        </tr>
+        <tr>
+            <td>Cost of living</td>
+            <td><input type="number" id="co1" class="Jan"></td>
+            <td><input type="number" id="co2" class="Feb"></td>
+            <td><input type="number" id="co3" class="Mar"></td>
+            <td><input type="number" id="co4" class="Apr"></td>
+            <td><input type="number" id="co5" class="May"></td>
+            <td><input type="number" id="co6" class="Jun"></td>
+            <td><input type="number" id="co7" class="Jul"></td>
+            <td><input type="number" id="co8" class="Aug"></td>
+            <td><input type="number" id="co9" class="Sep"></td>
+            <td><input type="number" id="co10" class="Oct"></td>
+            <td><input type="number" id="co11" class="Nov"></td>
+            <td><input type="number" id="co12" class="Dec"></td>
+ 
+        </tr>
+        <tr>
+            <td>Others</td>
+            <td><input type="number" id="other1" class="Jan"></td>
+            <td><input type="number" id="other2" class="Feb"></td>
+            <td><input type="number" id="other3" class="Mar"></td>
+            <td><input type="number" id="other4" class="Apr"></td>
+            <td><input type="number" id="other5" class="May"></td>
+            <td><input type="number" id="other6" class="Jun"></td>
+            <td><input type="number" id="other7" class="Jul"></td>
+            <td><input type="number" id="other8" class="Aug"></td>
+            <td><input type="number" id="other9" class="Sep"></td>
+            <td><input type="number" id="other10" class="Oct"></td>
+            <td><input type="number" id="other11" class="Nov"></td>
+            <td><input type="number" id="other12" class="Dec"></td>
+        </tr>
+        <tr>
+            <td>Sum</td>
+            <td><input type="number" id="sum1" class="Jan"></td>
+            <td><input type="number" id="sum2" class="Feb"></td>
+            <td><input type="number" id="sum3" class="Mar"></td>
+            <td><input type="number" id="sum4" class="Apr"></td>
+            <td><input type="number" id="sum5" class="May"></td>
+            <td><input type="number" id="sum6" class="Jun"></td>
+            <td><input type="number" id="sum7" class="Jul"></td>
+            <td><input type="number" id="sum8" class="Aug"></td>
+            <td><input type="number" id="sum9" class="Sep"></td>
+            <td><input type="number" id="sum10" class="Oct"></td>
+            <td><input type="number" id="sum11" class="Nov"></td>
+            <td><input type="number" id="sum12" class="Dec"></td>
+        </tr>
+    </table>
+ 
+    <canvas id="Expense_chart" width="300" height="300"></canvas>
+ 
+    <div>
+        <h2 id="your_progress">Your usage track!</h2>
+    </div>
+     
+    <div class="progress">
+        <div class="progress-done"></div>
+    </div>
+     
+    <div class="inputContainer">
+        <div>
+          <h3>Expense</h3>
+          <input class="expense" type="number" />
+        </div>
+     
+        <div>
+          <h3>Income</h3>
+          <input class="income" type="number" />
+        </div>
+ 
+        <div>
+          <h3>Goal</h3>
+          <input class="goal" type="number" />
+        </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
